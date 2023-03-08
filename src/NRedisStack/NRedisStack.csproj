@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net7.0</TargetFrameworks>
+    <TargetFrameworks>net6.0;net7.0;netstandard2.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
 	<Nullable>enable</Nullable>
 	<Authors>Redis Open Source</Authors>
@@ -11,11 +11,17 @@
 	<Version>0.5.1</Version>
 	<ReleaseVersion>0.5.1</ReleaseVersion>
 	<PackageVersion>0.5.1</PackageVersion>
+	<LangVersion>10</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
 	<PackageReference Include="StackExchange.Redis" Version="2.6.90" />
 	<None Include="..\..\README.md" Pack="true" PackagePath="\" />
+  </ItemGroup>
+	
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+	<PackageReference Include="System.Text.Json" Version="7.0.2" />
+	<PackageReference Include="Microsoft.Bcl.HashCode" Version="1.1.1" />
   </ItemGroup>
 
 </Project>
